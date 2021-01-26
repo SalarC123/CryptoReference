@@ -19,8 +19,8 @@
 .cards > div {
     width: var(--box-width);
     height: var(--box-height);
-    background-color: rgb(52, 166, 186);
-    box-shadow:10px 10px 20px gray;
+    background-color: #292b2c;
+    box-shadow:10px 10px 20px rgb(104, 104, 104);
 }
 
 @media (max-width:1700px) {
@@ -45,4 +45,32 @@
 }
 .search-img:hover {
     opacity: 0.5;
+}
+
+.coin-name {
+    display: block;
+    text-align: center;
+    padding: 1rem;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.key-info {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: normal;
+    text-align: left;
+    line-height: 1;
+    margin-top: 1rem;
+}
+
+canvas {
+    margin-top: 1rem;
+}
+
+img {
+    width: 30px;
+    height: 30px;
+    margin-left: 1rem;
 }
