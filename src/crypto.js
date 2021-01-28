@@ -1,30 +1,23 @@
 const cards = document.querySelector('.cards')
 const search = document.querySelector('.search')
 
+// SEARCH FUNCTION
+// MAKE MULTIPLE ASYNC FUNCS
+
 // styling options for the dates on the chart
 const options = {
     month: "short",
     day: "2-digit"
 }
 
-// .then(() => {
-//     const cardTextList = Array.from(cards.children).map(elem => elem.outerHTML.slice(5,-6))
-//     search.addEventListener('input', e => {
-//         inp = e.target.value
-//         let cutList = cardTextList.filter((node) => {
-//             return node.toLowerCase().includes(inp.toLowerCase())
-//         })
-//         console.log(cutList)
-//     })
-// })
-
 async function createCards() {
     try {
         const res = await fetch('https://api.coingecko.com/api/v3/coins/list')
         const data = await res.json()
 
-        for (let i = 0; i < 200; i++) {
-            if (/\half|hedge|bear|bull/.test(data[i]['symbol'])) {
+        for (let i = 0; i < 100; i++) {
+            // Filters out coins with minimal data
+            if (/\half|hedge|bear|bull/.test(data[i]['symbol'].toLowerCase())) {
                     continue
             }
 
@@ -32,7 +25,6 @@ async function createCards() {
             const secondData = await secondRes.json()
 
             let newDiv = document.createElement('div')
-            // newDiv.setAttribute('class','m-3')
             cards.appendChild(newDiv)
             newDiv.innerText = data[i]["symbol"]
             newDiv.classList.add('coin-name')
@@ -104,6 +96,27 @@ async function createCards() {
     } catch (error) {
         console.log(error)
     }
+    // Changes placeholder once all cards have loaded in
+    search.placeholder = 'Search Cryptocurrencies'
 }
 
+
 createCards()
+
+
+// Search functionality
+document.querySelector('.search-img').addEventListener('click', () => {
+
+    const cardArray = Array.from(cards.children)
+
+    let inp = search.value
+    
+    // Finds the name of the coin and checks if that name includes the text in the input
+    for (element of cardArray) {
+        if (element.innerText.split('\n')[0].toLowerCase().includes(inp.toLowerCase())) {
+            element.style.display = 'block'
+        } else {
+            element.style.display = 'none'
+        }
+    }
+})
