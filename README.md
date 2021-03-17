@@ -2,10 +2,9 @@
 
 ## Web app for viewing organized cryptocurrency data
 
-### No dependencies
-### Vanilla JS with [Coingecko API](https://www.coingecko.com/en/api) for cryptocurrency data
+### Vanilla JS with [Coingecko API](https://www.coingecko.com/en/api) for cryptocurrency data and [ChartJS](https://www.chartjs.org) for graphs
 
-## [Try it here!](https://cryptoreference.netlify.app/crypto.html)
+## [Try it here!](https://cryptoreference.netlify.app/)
 
 ![First Demo Image](./Images/demo1.png)
 
